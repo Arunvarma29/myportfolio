@@ -11,21 +11,21 @@ const Home = () => {
     <>
       <section className="h-full">
         <div className="container mx-auto h-full">
-          <div className="flex flex-col xl:flex-row items-center justify-between mx-20 xl:pt-8 xl:pb-24">
+          <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-7 xl:pb-16">
             {/* text */}
-            <div className="text-center mt-3 xl:text-left order-2 xl:order-0">
+            <div className="text-center xl:text-left order-2 xl:order-0">
               <span className="text-xl font-semibold">Software Developer</span>
               <h1 className="h1 mb-6">
                 Hello I'm <br /> <span className="text-accent">Arun Varma</span>
               </h1>
-              <p className="max-w-125 mb-9 dark:text-white/80 ">
+              <p className="h3 max-w-125 mb-9 dark:text-white/80 ">
                 A minimalist builder solving complex problems. Turning cluttered
                 ideas into simple, working software.
               </p>
 
               {/* btn and social media links */}
 
-              <div className="flex flex-col xl:flex-row items-center justify-items-start gap-8">
+              <div className="flex flex-col xl:flex-row items-center justify-items-start gap-8 ">
                 <Button
                   varient="outline"
                   size="lg"
@@ -46,11 +46,11 @@ const Home = () => {
 
             {/* Photo */}
             <div className="order-1 xl:order-0 mb-8 xl:mb-0">
-              <Photo/>
-              </div>
+              <Photo />
+            </div>
           </div>
         </div>
-        <Stats/>
+        <Stats />
       </section>
     </>
   );

@@ -134,7 +134,7 @@
   }
 
   .h1 {
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+    @apply text-[48px] xl:text-[120px] leading-[1.1] font-semibold;
   }
 
   .h2 {
@@ -142,7 +142,7 @@
   }
 
   .h3 {
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+    @apply text-[18px] xl:text-[24px] leading-[1.1] font-semibold;
   }
 
   html {
