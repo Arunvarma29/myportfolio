@@ -65,7 +65,7 @@
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(69.499% 0.23462 142.54);
   --accent-foreground: oklch(0.205 0 0);
-   --avatar-ring: #7C3AED;
+  --avatar-ring: #7C3AED;
   --avatar-bg: #F5F3FF;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -147,5 +147,13 @@
 
   html {
     @apply font-sans;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px #8c8f8d;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #00ff99;
   }
 }
