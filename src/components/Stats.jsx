@@ -9,7 +9,7 @@ const stats=[
     },
     {
         num:5,
-        text: "Project completed"
+        text: "Projects completed"
     },
     {
         num:7,
