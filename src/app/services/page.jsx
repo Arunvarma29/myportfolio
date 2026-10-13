@@ -74,7 +74,7 @@ const Sevices = () => {
                 {/* description */}
                 <p className="dark:text-white/80">{service.description}</p>
                 {/* border */}
-                <div className="border-b border-white/20 w-full"></div>
+                <div className="border-b border-2 bg-gray-300 border-white/20 w-full group-hover:bg-green-500"></div>
               </div>
             );
           })}
