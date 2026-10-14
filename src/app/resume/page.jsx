@@ -25,7 +25,8 @@ import { motion } from "motion/react";
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem illo, neque doloribus atque perferendis porro nulla vitae laborum harum qui recusandae, saepe rerum veniam.",
+    "I'm a software developer focused on building responsive web applications, scalable backend systems, and AI-powered solutions. I enjoy solving problems and turning ideas into practical digital products.",
+  
   info: [
     {
       fieldName: "Name",
@@ -67,7 +68,8 @@ const experience = {
   icon: "/assets/resume/",
   title: "My experience",
   description:
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem illo, neque doloribus atque perferendis porro nulla vitae laborum harum qui recusandae, saepe rerum veniam.",
+    "My experience comes from software development training and hands-on projects, with a focus on full-stack development and AI-powered applications.",
+  
   info: [
     {
       company: "Freelance",
@@ -86,7 +88,7 @@ const education = {
   icon: "/assets/resume/",
   title: "My education",
   description:
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem illo, neque doloribus atque perferendis porro nulla vitae laborum harum qui recusandae, saepe rerum veniam.",
+    "My academic background and professional training have helped me develop a foundation in programming, software engineering, and modern development practices.",
   info: [
     {
       institution: "Almabetter",
@@ -95,7 +97,7 @@ const education = {
       duration: "2025 - Present",
     },
     {
-      institution: "Sadguru Gadge Maharaj College, Karad",
+      institution: "Sadguru Gadge Maharaj College, Karad.",
       degree: "B.Sc. in Computer Science",
       duration: "2021 - 2024",
     },
@@ -105,7 +107,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem illo, neque doloribus atque perferendis porro nulla vitae laborum harum qui recusandae, saepe rerum veniam.",
+    "Technologies I use to build modern, responsive, and reliable applications.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -242,16 +244,16 @@ const Resume = () => {
               <div className="flex flex-col gap-7.5 ">
                 <div className="flex flex-col gap-7.5 text-center xl:text-left">
                   <h3 className="text-4xl xl:text-5xl font-bold">{skills.title}</h3>
-                <p className="max-w-150 text-center xl:text-left mx-auto xl:mx-0"> {skills.description} </p>
+                <p className="max-w-150 lg:text-lg text-center xl:text-left mx-auto xl:mx-0"> {skills.description} </p>
                 
               </div>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-7.5 gap-4">
+              <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-5 gap-4">
                 {skills.skillList.map((skill,index)=>{
                   return <li key={index}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className="w-full h-37.5 bg-[#d4d4d8] rounded-xl flex justify-center items-center group-[]:">
-                          <div className="text-6xl group-hover:text-white transition-all duration-300">{skill.icon}</div>
+                        <TooltipTrigger className="w-full h-35 bg-[#d4d4d8] rounded-4xl flex justify-center items-center">
+                          <div className="text-7xl group-hover:text-white transition-all duration-300">{skill.icon}</div>
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className="capitalize">{skill.name}</p>
