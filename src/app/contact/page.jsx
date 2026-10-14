@@ -25,12 +25,12 @@ import {
 } from "react-icons/fa";
 
 const info = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "+91 82618 82236",
-    href: "tel:+918261882236",
-  },
+  // {
+  //   icon: <FaPhoneAlt />,
+  //   title: "Phone",
+  //   description: "+91 xxxxxxxxxx",
+  //   href: "tel:+91xxxxxxxxxx",
+  // },
   {
     icon: <FaEnvelope />,
     title: "Email",

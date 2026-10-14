@@ -33,10 +33,6 @@ const about = {
       fieldValue: " Arun Varma",
     },
     {
-      fieldName: "Phone",
-      fieldValue: " +91 82618 82236",
-    },
-    {
       fieldName: "Experience",
       fieldValue: " +1 Year",
     },
