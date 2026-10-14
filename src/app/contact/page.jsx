@@ -61,17 +61,17 @@ const Contact = () => {
           ease: "easeOut",
         },
       }}
-      className="flex min-h-[80vh] items-center py-10 sm:py-14 lg:py-16"
+      className="flex min-h-[80vh] items-center py-7 sm:py-14 lg:py-16"
     >
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         {/* Main layout */}
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.9fr)] lg:gap-10 xl:gap-14">
+        <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.9fr)] lg:gap-10 xl:gap-14">
 
           {/* Contact form */}
           <div className="order-2 min-w-0 lg:order-1">
             <form
               onSubmit={(event) => event.preventDefault()}
-              className="flex flex-col gap-6 rounded-2xl border border-white/5 bg-[#27272c] p-5 shadow-lg shadow-black/5 sm:p-7 lg:p-8"
+              className="flex flex-col gap-3 rounded-2xl border border-white/5 bg-[#27272c] p-7 shadow-lg shadow-black/5 sm:p-7 lg:p-8"
             >
               {/* Form heading */}
               <div className="space-y-3">
@@ -87,7 +87,7 @@ const Contact = () => {
               </div>
 
               {/* Personal information */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="firstName"
@@ -239,7 +239,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="md"
-                  className="group w-full gap-2 rounded-full px-6 font-semibold sm:w-fit"
+                  className="group w-full gap-3 rounded-full px-6 py-1 font-semibold sm:w-fit"
                 >
                   Send message
                   <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
@@ -278,7 +278,7 @@ const Contact = () => {
                         {item.title}
                       </p>
 
-                      <p className="mt-1 break-words text-sm font-semibold leading-6 text-gray-950 sm:text-base">
+                      <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-gray-950 sm:text-base">
                         {item.description}
                       </p>
                     </div>
