@@ -38,8 +38,8 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="flex min-h-0 flex-col justify-center px-4 py-5 sm:px-6 sm:py-6 lg:h-[calc(100dvh-5rem)] lg:overflow-hidden xl:px-0">
-      <div className="container mx-auto w-full max-w-6xl">
+    <section className="flex min-h-0 flex-col justify-center px-4 py-5 sm:px-6 sm:py-6 lg:h-[calc(100dvh-12rem)] lg:overflow-hidden xl:px-0">
+      <div className="container mx-auto w-full max-w-7xl">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -47,22 +47,22 @@ const Services = () => {
             opacity: 1,
             y: 0,
             transition: {
-              delay: 0.15,
+              delay: 2.0,
               duration: 0.35,
               ease: "easeOut",
             },
           }}
           className="mb-5 max-w-2xl sm:mb-6 lg:mb-7"
         >
-          <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
+          <p className="mb-1.5 text-xs lg:text-lg font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm">
             What I do
           </p>
 
-          <h1 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-3xl lg:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-3xl lg:text-5xl">
             Services I offer
           </h1>
 
-          <p className="mt-2 max-w-xl text-md leading-5 text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
+          <p className="mt-2 max-w-xl text-xs lg:text-[16px] leading-5 text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
             I build modern web applications and AI-powered
             solutions, focusing on usability, performance,
             and maintainable software.
@@ -78,7 +78,7 @@ const Services = () => {
             visible: {
               transition: {
                 staggerChildren: 0.08,
-                delayChildren: 0.1,
+                delayChildren: 2.1,
               },
             },
           }}
@@ -99,26 +99,26 @@ const Services = () => {
             >
               {/* Number and arrow */}
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-5xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1px_#9ca3af] transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-6xl">
+                <span className="text-4xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1px_#9ca3af] transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-7xl">
                   {service.num}
                 </span>
 
                 <Link
                   href={service.href}
                   aria-label={`Discuss ${service.title}`}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-300 text-gray-900 transition-all duration-300 hover:-rotate-45 hover:border-accent hover:bg-accent hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-white/20 dark:text-white sm:h-10 sm:w-10 lg:h-11 lg:w-11"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 border-dotted text-gray-900 transition-all duration-300 hover:-rotate-45 hover:border-dotted hover:bg-accent hover:text-black focus-visible:outline-1 focus-visible:ring-2 focus-visible:ring-accent dark:border-white/20 dark:text-white sm:h-10 sm:w-10 lg:h-14 lg:w-14"
                 >
                   <BsArrowDownRight className="text-lg" />
                 </Link>
               </div>
 
               {/* Title */}
-              <h2 className="text-xl font-bold leading-tight text-gray-950 transition-colors duration-300 group-hover:text-accent dark:text-white sm:text-2xl lg:text-[26px]">
+              <h2 className="text-xl font-bold leading-tight text-gray-950 transition-colors duration-300 group-hover:text-accent dark:text-white sm:text-2xl lg:text-[32px]">
                 {service.title}
               </h2>
 
               {/* Description */}
-              <p className="mt-2 text-xs leading-5 text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
+              <p className="mt-2 text-xs leading-5 lg:text-lg text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
                 {service.description}
               </p>
 
