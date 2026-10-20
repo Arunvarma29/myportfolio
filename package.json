@@ -6,12 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:migrate:create": "node-pg-migrate create --migrations-dir db/migrations --migration-file-language js",
+    "db:migrate:up": "node-pg-migrate up --config-file migrations.config.mjs",
+    "db:migrate:down": "node-pg-migrate down --config-file migrations.config.mjs"
+    
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1152.0",
+    "@aws-sdk/s3-request-presigner": "^3.1152.0",
     "@base-ui/react": "^1.8.0",
     "@hugeicons/core-free-icons": "^4.3.5",
     "@hugeicons/react": "^1.1.10",
+    "@next/env": "^16.4.2",
     "@tailwindcss/postcss": "^4.3.3",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
@@ -32,6 +39,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "node-pg-migrate": "^9.0.0",
     "tailwindcss": "^4.3.3"
   }
 }
