@@ -36,10 +36,7 @@ const about = {
       fieldName: "Experience",
       fieldValue: " +1 Year",
     },
-    {
-      fieldName: "Nationality",
-      fieldValue: " Indian",
-    },
+   
     {
       fieldName: "Github",
       fieldValue: " Arunvarma29",
@@ -99,6 +96,9 @@ const education = {
     },
   ],
 };
+
+
+
 
 const skills = {
   title: "My Skills",

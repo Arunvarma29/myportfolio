@@ -45,6 +45,9 @@ const info = [
   },
 ];
 
+
+
+
 const inputStyles =
   "h-12 w-full min-w-0 rounded-lg border border-white/10 bg-[#1c1b22] px-4 text-sm text-white placeholder:text-white/45 shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent";
 
