@@ -4,39 +4,79 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { BsArrowDownRight } from "react-icons/bs";
+import { useState,useEffect } from "react";
 
-const services = [
-  {
-    num: "01",
-    title: "Web Development",
-    description:
-      "Responsive, accessible, high-performance websites built with React, Next.js, and modern web technologies.",
-    href: "/contact",
-  },
-  {
-    num: "02",
-    title: "Full-Stack Development",
-    description:
-      "End-to-end applications with scalable APIs, secure authentication, database integration, and reliable backend systems.",
-    href: "/contact",
-  },
-  {
-    num: "03",
-    title: "AI & Generative AI",
-    description:
-      "AI-powered applications using LLMs, RAG pipelines, prompt engineering, and intelligent automation.",
-    href: "/contact",
-  },
-  {
-    num: "04",
-    title: "API & Backend Development",
-    description:
-      "REST APIs, PostgreSQL database design, backend integrations, and maintainable server-side architecture.",
-    href: "/contact",
-  },
-];
+// const services = [
+//   {
+//     num: "01",
+//     title: "Web Development",
+//     description:
+//       "Responsive, accessible, high-performance websites built with React, Next.js, and modern web technologies.",
+//     href: "/contact",
+//   },
+//   {
+//     num: "02",
+//     title: "Full-Stack Development",
+//     description:
+//       "End-to-end applications with scalable APIs, secure authentication, database integration, and reliable backend systems.",
+//     href: "/contact",
+//   },
+//   {
+//     num: "03",
+//     title: "AI & Generative AI",
+//     description:
+//       "AI-powered applications using LLMs, RAG pipelines, prompt engineering, and intelligent automation.",
+//     href: "/contact",
+//   },
+//   {
+//     num: "04",
+//     title: "API & Backend Development",
+//     description:
+//       "REST APIs, PostgreSQL database design, backend integrations, and maintainable server-side architecture.",
+//     href: "/contact",
+//   },
+// ];
 
 const Services = () => {
+
+  
+const [services,setServices]=useState([]);
+
+const getServices = async () => {
+  try {
+    const response = await fetch("/api/service", {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch services");
+    }
+
+    const result = await response.json();
+
+    console.log("API response:", result);
+
+    // Extract the array from the API response
+    const servicesData = Array.isArray(result)
+      ? result
+      : result.data;
+
+    if (!Array.isArray(servicesData)) {
+      throw new Error("API response does not contain a services array");
+    }
+
+    setServices(servicesData);
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    setError(error.message);
+  }
+};
+
+useEffect(() => {
+  getServices();
+}, []);
+
   return (
     <section className="flex min-h-0 flex-col justify-center px-4 py-5 sm:px-6 sm:py-6 lg:h-[calc(100dvh-12rem)] lg:overflow-hidden xl:px-0">
       <div className="container mx-auto w-full max-w-7xl">
@@ -84,15 +124,15 @@ const Services = () => {
           }}
           className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 lg:gap-x-12 lg:gap-y-7"
         >
-          {services.map((service) => (
+          {services.map((service, index) => (
             <motion.article
-              key={service.num}
+              key={service.id}
               variants={{
                 hidden: { opacity: 0, y: 10 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.3 },
+                  transition: { duration: 0.35 },
                 },
               }}
               className="group flex min-w-0 flex-col"
@@ -100,7 +140,7 @@ const Services = () => {
               {/* Number and arrow */}
               <div className="mb-3 flex items-center justify-between">
                 <span className="text-4xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1px_#9ca3af] transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-7xl">
-                  {service.num}
+                   <span>{String(index + 1).padStart(2, "0")}</span>
                 </span>
 
                 <Link
