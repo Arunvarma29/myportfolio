@@ -12,8 +12,14 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* logo */}
         <Link href={"/"}>
-          <h1 className="text-4xl font-semibold dark:text-white">
-            &lt;Arun<span className="text-[yellow] text-5xl">.</span>&gt;
+          <h1 className="text-5xl font-bold dark:text-white">
+            &lt;
+            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">
+             .
+            </span>
+            /
+            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">.</span>
+            &gt;
           </h1>
         </Link>
 
