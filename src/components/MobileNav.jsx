@@ -41,8 +41,14 @@ const MobileNaV = () => {
         {/* logo */}
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href={"/"}>
-          <h1 className="text-4xl font-semibold">
-            &lt;Arun<span className="text-[yellow]">.</span>&gt;
+         <h1 className="text-5xl font-bold dark:text-white">
+            &lt;
+            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">
+             .
+            </span>
+            /
+            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">.</span>
+            &gt;
           </h1>
           </Link>
         </div>

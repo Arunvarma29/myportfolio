@@ -11,7 +11,7 @@ const oxaniumHeading = Oxanium({subsets:['latin'],variable:'--font-heading'});
 
 const jetBrains_Mono = JetBrains_Mono({
   subsets:['latin'],
-  Weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable:'--font-sans'
 });
 
@@ -25,10 +25,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: "Arun - Software Developer",
   description: "Software Engineer",
+  icons: {
+    icon: "/assets/favicon.png",
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
@@ -36,6 +41,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", jetBrains_Mono.variable, oxaniumHeading.variable)}
     >
+      
       <body className="min-h-full flex flex-col">
         <Header />
         <StairTransition/>
