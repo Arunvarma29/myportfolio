@@ -1,5 +1,5 @@
 "use client"
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
 // Components
@@ -78,14 +78,18 @@ const Home = () => {
               {/* btn and social media links */}
 
               <div className="flex flex-col xl:flex-row items-center justify-items-start gap-8 ">
-                <Button
-                  varient="outline"
-                  size="lg"
-                  className="uppercase flex items-center gap-2"
+                <a
+                  href="/api/cv"
+                  download
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "lg",
+                    className: "uppercase flex items-center gap-2 bg-accent text-white hover:bg-green-800",
+                  })}
                 >
                   <span className="px-2">Download CV</span>
                   <FiDownload className="text-xl" />
-                </Button>
+                </a>
 
                 <div className="">
                   <Socials

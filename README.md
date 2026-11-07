@@ -29,6 +29,21 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## CV download
+
+The homepage's **Download CV** button fetches the configured object from Neon Object Storage through the server-side `/api/cv` route. Configure these variables in `.env` and in your deployment environment:
+
+```env
+AWS_ENDPOINT_URL_S3=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+NEON_STORAGE_BUCKET=
+NEON_CV_OBJECT_KEY=
+```
+
+Upload the CV to the configured bucket and set `NEON_CV_OBJECT_KEY` to its object key (including any folder path). Storage credentials are used only on the server and are not exposed to the browser.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
