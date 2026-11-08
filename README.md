@@ -45,6 +45,10 @@ NEON_AVATAR_KEY=
 
 Upload the CV and avatar image to the configured bucket, then set `NEON_CV_OBJECT_KEY` and `NEON_AVATAR_KEY` to their object keys (including any folder paths). The avatar is served through `/api/avatar`. Storage credentials are used only on the server and are not exposed to the browser.
 
+## Social links
+
+The homepage loads social links from the `social_links` table through `/api/social-links`. Add rows with a `platform`, `url`, and optional icon name (`github`, `linkedin`, or `instagram`); links are ordered by `sort_order`.
+
 ## GitHub commit stats
 
 The homepage shows your lifetime commit-contribution total from GitHub's contribution history, including private contributions, from account creation through the current year. The server-side `/api/github-stats` route refreshes every 15 minutes. This uses GitHub's contribution-graph rules and is not a raw count of every commit object across all branches. Set `GITHUB_USERNAME` and `GITHUB_TOKEN_API` in `.env` and your deployment environment. The token must belong to that GitHub account to include private contributions, and must never use a `NEXT_PUBLIC_` prefix.
