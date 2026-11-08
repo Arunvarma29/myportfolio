@@ -23,13 +23,14 @@ const Photo = () => {
           className="w-74.5 h-74.5 xl:w-124.5 xl:h-124.5 absolute inset-12 mx-auto "
         >
           <Image
-            src="/Avatar.png"
+            src="/api/avatar"
+            unoptimized
             priority
             quality={75}
             alt="photo"
             className="xl:w-[390px] xl:h-[390px] object-contain"
-            height={"200"}
-            width={"200"}
+            height={200}
+            width={200}
           />
         </motion.div>
 

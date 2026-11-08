@@ -40,9 +40,10 @@ AWS_SECRET_ACCESS_KEY=
 AWS_REGION=
 NEON_STORAGE_BUCKET=
 NEON_CV_OBJECT_KEY=
+NEON_AVATAR_KEY=
 ```
 
-Upload the CV to the configured bucket and set `NEON_CV_OBJECT_KEY` to its object key (including any folder path). Storage credentials are used only on the server and are not exposed to the browser.
+Upload the CV and avatar image to the configured bucket, then set `NEON_CV_OBJECT_KEY` and `NEON_AVATAR_KEY` to their object keys (including any folder paths). The avatar is served through `/api/avatar`. Storage credentials are used only on the server and are not exposed to the browser.
 
 ## GitHub commit stats
 
