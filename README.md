@@ -44,6 +44,10 @@ NEON_CV_OBJECT_KEY=
 
 Upload the CV to the configured bucket and set `NEON_CV_OBJECT_KEY` to its object key (including any folder path). Storage credentials are used only on the server and are not exposed to the browser.
 
+## GitHub commit stats
+
+The homepage shows your lifetime commit-contribution total from GitHub's contribution history, including private contributions, from account creation through the current year. The server-side `/api/github-stats` route refreshes every 15 minutes. This uses GitHub's contribution-graph rules and is not a raw count of every commit object across all branches. Set `GITHUB_USERNAME` and `GITHUB_TOKEN_API` in `.env` and your deployment environment. The token must belong to that GitHub account to include private contributions, and must never use a `NEXT_PUBLIC_` prefix.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
