@@ -12,7 +12,14 @@ export async function GET() {
     bucket: process.env.NEON_STORAGE_BUCKET,
     key: process.env.NEON_AVATAR_KEY,
   };
-  const missingConfig = Object.entries(config)
+  const missingConfig = [
+    ["AWS_ENDPOINT_URL_S3", config.endpoint],
+    ["AWS_REGION", config.region],
+    ["AWS_ACCESS_KEY_ID", config.accessKeyId],
+    ["AWS_SECRET_ACCESS_KEY", config.secretAccessKey],
+    ["NEON_STORAGE_BUCKET", config.bucket],
+    ["NEON_AVATAR_KEY", config.key],
+  ]
     .filter(([, value]) => !value)
     .map(([name]) => name);
 
