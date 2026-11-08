@@ -103,13 +103,15 @@ const Resume = () => {
   const github = resume?.socialLinks?.find((link) =>
     link.platform?.toLowerCase().includes("github"),
   );
+  const githubName = github?.url?.replace(/\/+$/, "").split("/").pop();
   const aboutInfo = [
     ["Name", profile?.full_name],
     ["Headline", profile?.headline],
-    ["GitHub", github?.url],
+    ["GitHub", githubName],
     ["Email", profile?.email],
-    ["Phone", profile?.phone],
+    // ["Phone", profile?.phone],
     ["Location", profile?.location],
+    ["Year Of Experience", "+1" ]
   ].filter(([, value]) => value);
 
   return (
@@ -273,7 +275,7 @@ const Resume = () => {
                   {aboutInfo.map(([fieldName, fieldValue])=>{
                     return(
                       <li key={fieldName} className="flex items-center justify-center xl:justify-start gap-4">
-                        <span className="text-green-700 text-sm">{fieldName}{":"}</span>
+                        <span className="text-green-700 text-lg">{fieldName}{":"}</span>
                         <span className="xl:text-xl text-[14px] ">{fieldValue}</span>
                       </li>
                     );
