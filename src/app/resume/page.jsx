@@ -1,12 +1,20 @@
 "use client";
 
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
-  SiTailwindcss,
+  FaCode,
+  FaCss3,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaReact,
+} from "react-icons/fa";
+import {
+  SiMongodb,
   SiNextdotjs,
   SiPostgresql,
-  SiMongodb,
+  SiTailwindcss,
 } from "react-icons/si";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -21,130 +29,89 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "motion/react";
 
-//about data
-const about = {
-  title: "About me",
-  description:
-    "I'm a software developer focused on building responsive web applications, scalable backend systems, and AI-powered solutions. I enjoy solving problems and turning ideas into practical digital products.",
-  
-  info: [
-    {
-      fieldName: "Name",
-      fieldValue: " Arun Varma",
-    },
-    {
-      fieldName: "Experience",
-      fieldValue: " +1 Year",
-    },
-   
-    {
-      fieldName: "Github",
-      fieldValue: " Arunvarma29",
-    },
-    {
-      fieldName: "Email",
-      fieldValue: " varmaarun580@gmail.com",
-    },
-    {
-      fieldName: "Freelance",
-      fieldValue: " Available",
-    },
-    {
-      fieldName: "Language",
-      fieldValue: " English",
-    },
-  ],
+const skillIcons = {
+  html: FaHtml5,
+  html5: FaHtml5,
+  css: FaCss3,
+  css3: FaCss3,
+  javascript: FaJs,
+  js: FaJs,
+  node: FaNodeJs,
+  nodejs: FaNodeJs,
+  react: FaReact,
+  reactjs: FaReact,
+  next: SiNextdotjs,
+  nextjs: SiNextdotjs,
+  tailwind: SiTailwindcss,
+  tailwindcss: SiTailwindcss,
+  mongodb: SiMongodb,
+  postgresql: SiPostgresql,
 };
 
-//experience data
-const experience = {
-  icon: "/assets/resume/",
-  title: "My experience",
-  description:
-    "My experience comes from software development training and hands-on projects, with a focus on full-stack development and AI-powered applications.",
-  
-  info: [
-    {
-      company: "Freelance",
-      position: "Freelance Web Startup",
-      duration: "2024 - Present",
-    },
-    {
-      company: "Almabetter",
-      position: "Full Stack Developer",
-      duration: "2025 - 2026",
-    },
-  ],
-};
+const formatYear = (date) => (date ? String(date).slice(0, 4) : "");
 
-const education = {
-  icon: "/assets/resume/",
-  title: "My education",
-  description:
-    "My academic background and professional training have helped me develop a foundation in programming, software engineering, and modern development practices.",
-  info: [
-    {
-      institution: "Almabetter",
-      degree:
-        "Professional Fellowship in Software Engineering with AI & DevOps",
-      duration: "2025 - Present",
-    },
-    {
-      institution: "Sadguru Gadge Maharaj College, Karad.",
-      degree: "B.Sc. in Computer Science",
-      duration: "2021 - 2024",
-    },
-  ],
-};
+const formatDuration = (item) => {
+  const start = formatYear(item.start_date);
+  const end = item.is_current || !item.end_date
+    ? "Present"
+    : formatYear(item.end_date);
 
-
-
-
-const skills = {
-  title: "My Skills",
-  description:
-    "Technologies I use to build modern, responsive, and reliable applications.",
-  skillList: [
-    {
-      icon: <FaHtml5 />,
-      name: "Html 5",
-    },
-    {
-      icon: <FaCss3 />,
-      name: "CSS",
-    },
-    {
-      icon: <FaJs />,
-      name: "Javascript",
-    },
-    {
-      icon: <FaNodeJs />,
-      name: "NodeJs",
-    },
-    {
-      icon: <FaReact />,
-      name: "React.js",
-    },
-    {
-      icon: <SiNextdotjs />,
-      name: "Next.js",
-    },
-    {
-      icon: <SiTailwindcss />,
-      name: "TailwindCSS",
-    },
-    {
-      icon: <SiMongodb />,
-      name: "MongoDB",
-    },
-    {
-      icon: <SiPostgresql />,
-      name: "PostgreSQL",
-    },
-  ],
+  return start ? `${start} - ${end}` : end;
 };
 
 const Resume = () => {
+  const [resume, setResume] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchResume = async () => {
+      try {
+        const response = await fetch("/api/resume", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Failed to fetch resume data.");
+        }
+
+        setResume(result.data);
+      } catch (fetchError) {
+        if (fetchError.name !== "AbortError") {
+          console.error("Fetch resume error:", fetchError);
+          setError("Unable to load resume data.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchResume();
+    return () => controller.abort();
+  }, []);
+
+  const experience = resume?.experience || [];
+  const education = resume?.education || [];
+  const skills = resume?.skills || [];
+  const profile = resume?.profile;
+  const github = resume?.socialLinks?.find((link) =>
+    link.platform?.toLowerCase().includes("github"),
+  );
+  const aboutInfo = [
+    ["Name", profile?.full_name],
+    ["Headline", profile?.headline],
+    ["GitHub", github?.url],
+    ["Email", profile?.email],
+    ["Phone", profile?.phone],
+    ["Location", profile?.location],
+  ].filter(([, value]) => value);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -168,32 +135,45 @@ const Resume = () => {
 
           {/* content */}
           <div className="min-h-[70vh] w-full rounded-lg">
+            {loading && (
+              <p role="status" className="mb-4 text-center">
+                Loading resume data...
+              </p>
+            )}
+            {error && (
+              <p role="alert" className="mb-4 text-center text-red-500">
+                {error}
+              </p>
+            )}
 
             {/* experience */}
             <TabsContent value="experience" className="w-full ">
               <div className="flex flex-col gap-7.5 text-center xl:text-left">
                 <h3 className=" text-4xl xl:text-5xl font-bold">
-                  {experience.title}
+                  My experience
                 </h3>
                 <p className="max-w-190 text-gray-700 xl:text-lg font-semibold mx-auto xl:mx-0">
-                  {experience.description}
+                  My professional experience and roles.
                 </p>
                 <ScrollArea className={"h-100"}>
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-7.5">
-                    {experience.info.map((item, index) => {
+                    {experience.map((item, index) => {
                       return (
                         <li
                           key={index}
                           className="bg-[#232329] h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                         >
-                          <span className="text-accent">{item.duration}</span>
+                          <span className="text-accent">{formatDuration(item)}</span>
                           <h3 className=" text-lg xl:text-xl text-white max-w-65 min-h-15 text-center lg:text-left">
-                            {item.position}
+                            {item.role}
                           </h3>
                           <div className="flex items-center gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
                             <p className="text-white/60">{item.company}</p>
                           </div>
+                          {item.location && (
+                            <p className="text-sm text-white/50">{item.location}</p>
+                          )}
                         </li>
                       );
                     })}
@@ -206,22 +186,22 @@ const Resume = () => {
             <TabsContent value="education" className="w-full ">
                <div className="flex flex-col gap-7.5 text-center xl:text-left">
                 <h3 className=" text-4xl xl:text-5xl font-bold">
-                  {education.title}
+                  My education
                 </h3>
                 <p className="max-w-190 text-gray-700 xl:text-lg font-semibold mx-auto xl:mx-0">
-                  {education.description}
+                  My academic background and education.
                 </p>
                 <ScrollArea className={"h-100"}>
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-7.5">
-                    {education.info.map((item, index) => {
+                    {education.map((item, index) => {
                       return (
                         <li
                           key={index}
                           className="bg-[#232329] h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                         >
-                          <span className="text-accent">{item.duration}</span>
+                          <span className="text-accent">{formatDuration(item)}</span>
                           <h3 className="text-md xl:text-lg text-white max-w-65 min-h-15 text-center lg:text-left">
-                            {item.degree}
+                            {[item.degree, item.field_of_study].filter(Boolean).join(" - ")}
                           </h3>
                           <div className="flex items-center gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
@@ -239,17 +219,32 @@ const Resume = () => {
             <TabsContent value="skills" className="w-full h-full ">
               <div className="flex flex-col gap-7.5 ">
                 <div className="flex flex-col gap-7.5 text-center xl:text-left">
-                  <h3 className="text-4xl xl:text-5xl font-bold">{skills.title}</h3>
-                <p className="max-w-150 lg:text-lg text-center xl:text-left mx-auto xl:mx-0"> {skills.description} </p>
+                  <h3 className="text-4xl xl:text-5xl font-bold">My Skills</h3>
+                <p className="max-w-150 lg:text-lg text-center xl:text-left mx-auto xl:mx-0">Technologies and skills.</p>
                 
               </div>
               <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-5 gap-4">
-                {skills.skillList.map((skill,index)=>{
-                  return <li key={index}>
+                {skills.map((skill,index)=>{
+                  const iconKey = String(skill.name).toLowerCase().replace(/[^a-z0-9]/g, "");
+                  const Icon = skillIcons[iconKey] || FaCode;
+
+                  return <li key={`${skill.name}-${index}`}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="w-full h-35 bg-[#d4d4d8] rounded-4xl flex justify-center items-center">
-                          <div className="text-7xl group-hover:text-white transition-all duration-300">{skill.icon}</div>
+                          <div className="text-7xl group-hover:text-white transition-all duration-300">
+                            {skill.icon_url ? (
+                              <Image
+                                src={skill.icon_url}
+                                alt=""
+                                width={72}
+                                height={72}
+                                unoptimized
+                              />
+                            ) : (
+                              <Icon />
+                            )}
+                          </div>
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className="capitalize">{skill.name}</p>
@@ -271,15 +266,15 @@ const Resume = () => {
             >
               <div className="flex flex-col gap-7.5">
 
-                <h3 className="text-4xl text-black xl:text-5xl font-bold">{about.title}</h3>
-                <p className="max-w-190 text-md xl:text-lg  mx-auto xl:mx-0">{about.description}</p>
+                <h3 className="text-4xl text-black xl:text-5xl font-bold">About me</h3>
+                <p className="max-w-190 text-md xl:text-lg  mx-auto xl:mx-0">{profile?.bio || ""}</p>
 
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-190 mx-auto xl:mx-0"> 
-                  {about.info.map((item,index)=>{
+                  {aboutInfo.map(([fieldName, fieldValue])=>{
                     return(
-                      <li key={index} className="flex items-center justify-center xl:justify-start gap-4">
-                        <span className="text-green-700 text-sm">{item.fieldName}{":"}</span>
-                        <span className="xl:text-xl text-[14px] ">{item.fieldValue}</span>
+                      <li key={fieldName} className="flex items-center justify-center xl:justify-start gap-4">
+                        <span className="text-green-700 text-sm">{fieldName}{":"}</span>
+                        <span className="xl:text-xl text-[14px] ">{fieldValue}</span>
                       </li>
                     );
                   })}

@@ -28,7 +28,7 @@ const Photo = () => {
             priority
             quality={75}
             alt="photo"
-            className="xl:w-[390px] xl:h-[390px] object-contain"
+            className="xl:w-97.5 xl:h-97.5 object-contain"
             height={200}
             width={200}
           />
