@@ -43,3 +43,6 @@ next-env.d.ts
 
 # Database migration files
 db/migrations/
+!db/migrations/
+db/migrations/*
+!db/migrations/1794159524974_add-contact-message-details.js

@@ -2,6 +2,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,12 +26,7 @@ import {
 } from "react-icons/fa";
 
 const info = [
-  // {
-  //   icon: <FaPhoneAlt />,
-  //   title: "Phone",
-  //   description: "+91 xxxxxxxxxx",
-  //   href: "tel:+91xxxxxxxxxx",
-  // },
+  
   {
     icon: <FaEnvelope />,
     title: "Email",
@@ -52,6 +48,56 @@ const inputStyles =
   "h-12 w-full min-w-0 rounded-lg border border-white/10 bg-[#1c1b22] px-4 text-sm text-white placeholder:text-white/45 shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent";
 
 const Contact = () => {
+  const [service, setService] = useState("");
+  const [submissionStatus, setSubmissionStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+  const isSubmitting = submissionStatus === "submitting";
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setSubmissionStatus("submitting");
+    setFeedback("");
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.get("firstName"),
+          lastName: formData.get("lastName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          service,
+          message: formData.get("message"),
+        }),
+      });
+      const result = await response.json();
+
+      if (result.saved) {
+        form.reset();
+        setService("");
+      }
+
+      if (!response.ok || !result.success) {
+        setSubmissionStatus(result.saved ? "warning" : "error");
+        setFeedback(result.message || "Unable to send your message.");
+        return;
+      }
+
+      form.reset();
+      setService("");
+      setSubmissionStatus("success");
+      setFeedback(result.message);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setSubmissionStatus("error");
+      setFeedback("Unable to send your message right now. Please try again later.");
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
@@ -73,18 +119,18 @@ const Contact = () => {
           {/* Contact form */}
           <div className="order-2 min-w-0 lg:order-1">
             <form
-              onSubmit={(event) => event.preventDefault()}
+              onSubmit={handleSubmit}
               className="flex flex-col gap-3 rounded-2xl border border-white/5 bg-[#27272c] p-7 shadow-lg shadow-black/5 sm:p-7 lg:p-8"
             >
               {/* Form heading */}
               <div className="space-y-3">
                 <h1 className="text-2xl font-bold tracking-tight text-accent sm:text-3xl lg:text-4xl">
-                  Let's work together
+                  Let&apos;s work together
                 </h1>
 
                 <p className="text-sm leading-6 text-white/65 sm:text-base">
                   Have a project in mind? Tell me about your
-                  ideas, goals, or requirements. Let's build
+                  ideas, goals, or requirements. Let&apos;s build
                   something meaningful together.
                 </p>
               </div>
@@ -105,6 +151,7 @@ const Contact = () => {
                     type="text"
                     placeholder="Enter your first name"
                     autoComplete="given-name"
+                    maxLength={100}
                     required
                     className={inputStyles}
                   />
@@ -124,6 +171,7 @@ const Contact = () => {
                     type="text"
                     placeholder="Enter your last name"
                     autoComplete="family-name"
+                    maxLength={100}
                     required
                     className={inputStyles}
                   />
@@ -143,6 +191,7 @@ const Contact = () => {
                     type="email"
                     placeholder="you@example.com"
                     autoComplete="email"
+                    maxLength={320}
                     required
                     className={inputStyles}
                   />
@@ -165,6 +214,7 @@ const Contact = () => {
                     type="tel"
                     placeholder="+91"
                     autoComplete="tel"
+                    maxLength={50}
                     className={inputStyles}
                   />
                 </div>
@@ -179,7 +229,7 @@ const Contact = () => {
                   Service
                 </label>
 
-                <Select name="service">
+                <Select value={service || null} onValueChange={(value) => setService(value || "")}>
                   <SelectTrigger
                     id="service"
                     className={`${inputStyles} justify-between`}
@@ -229,23 +279,36 @@ const Contact = () => {
                   name="message"
                   placeholder="Tell me about your project..."
                   required
+                  maxLength={5000}
                   className="min-h-36 w-full resize-y rounded-lg border border-white/10 bg-[#1c1b22] px-4 py-3 text-sm leading-6 text-white placeholder:text-white/45 shadow-none focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent sm:min-h-40"
                 />
               </div>
 
               {/* Submit button */}
               <div className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs leading-5 text-white/45">
-                  I'll get back to you as soon as possible.
+                <p
+                  aria-live="polite"
+                  className={`text-xs leading-5 ${
+                    submissionStatus === "success"
+                      ? "text-green-400"
+                      : submissionStatus === "error" || submissionStatus === "warning"
+                        ? "text-amber-300"
+                        : "text-white/45"
+                  }`}
+                >
+                  {feedback || "I'll get back to you as soon as possible."}
                 </p>
 
                 <Button
                   type="submit"
                   size="md"
+                  disabled={isSubmitting}
                   className="group w-full gap-3 rounded-full px-6 py-1 font-semibold sm:w-fit"
                 >
-                  Send message
-                  <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+                  {isSubmitting ? "Sending..." : "Send message"}
+                  {!isSubmitting && (
+                    <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+                  )}
                 </Button>
               </div>
             </form>
@@ -259,7 +322,7 @@ const Contact = () => {
               </p>
 
               <h2 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl">
-                Let's start a conversation.
+                Let&apos;s start a conversation.
               </h2>
 
               <p className="text-sm leading-6 text-gray-600 sm:text-base">

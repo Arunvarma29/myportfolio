@@ -53,6 +53,10 @@ The homepage loads social links from the `social_links` table through `/api/soci
 
 The resume page loads profile details, experience, education, skills, and GitHub link data from the `about_me`, `experience`, `education`, `skills`, and `social_links` tables through `/api/resume`.
 
+## Contact form
+
+Contact submissions are saved to Neon `contact_messages`. Apply the database changes with `npm run db:migrate:up`, then configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM` locally and in the deployment environment. `CONTACT_EMAIL_TO` optionally overrides the recipient; by default the contact address in `about_me` is used. `SMTP_NO_REPLY_TO` optionally sets the reply-to address for automated confirmations. After saving a submission, the server sends you a notification and the sender an automated thank-you confirmation. SMTP credentials must only be configured server-side.
+
 ## GitHub commit stats
 
 The homepage shows your lifetime commit-contribution total from GitHub's contribution history, including private contributions, from account creation through the current year. The server-side `/api/github-stats` route refreshes every 15 minutes. This uses GitHub's contribution-graph rules and is not a raw count of every commit object across all branches. Set `GITHUB_USERNAME` and `GITHUB_TOKEN_API` in `.env` and your deployment environment. The token must belong to that GitHub account to include private contributions, and must never use a `NEXT_PUBLIC_` prefix.
