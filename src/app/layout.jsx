@@ -30,7 +30,7 @@ export const metadata = {
   title: "Arun - Software Developer",
   description: "Software Engineer",
   icons: {
-    icon: "/assets/favicon.png",
+    icon: "/api/head-icon",
   },
 };
 

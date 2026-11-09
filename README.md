@@ -41,9 +41,10 @@ AWS_REGION=
 NEON_STORAGE_BUCKET=
 NEON_CV_OBJECT_KEY=
 NEON_AVATAR_KEY=
+NEON_HEAD_IMAGE_OBJECT_KEY=
 ```
 
-Upload the CV and avatar image to the configured bucket, then set `NEON_CV_OBJECT_KEY` and `NEON_AVATAR_KEY` to their object keys (including any folder paths). The avatar is served through `/api/avatar`. Storage credentials are used only on the server and are not exposed to the browser.
+Upload the CV, avatar image, and head icon to the configured bucket, then set `NEON_CV_OBJECT_KEY`, `NEON_AVATAR_KEY`, and `NEON_HEAD_IMAGE_OBJECT_KEY` to their object keys (including any folder paths). The avatar is served through `/api/avatar`, and the head icon used in the browser tab is served through `/api/head-icon`. Storage credentials are used only on the server and are not exposed to the browser.
 
 ## Social links
 
