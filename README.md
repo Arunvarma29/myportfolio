@@ -54,6 +54,10 @@ The homepage loads social links from the `social_links` table through `/api/soci
 
 The resume page loads profile details, experience, education, skills, and GitHub link data from the `about_me`, `experience`, `education`, `skills`, and `social_links` tables through `/api/resume`.
 
+## Project work
+
+The Work page loads published projects from `GET /api/projects`. Add object keys (not temporary URLs) to `projects.thumbnail_url` and `project_images.image_url` for images stored in Neon Object Storage. The API returns thumbnail/image URLs served through `/api/projects/{slug}/image`; regular `http`/`https` image URLs are also supported. Project images use the same server-side S3 environment variables listed above.
+
 ## Contact form
 
 Contact submissions are saved to Neon `contact_messages`. Apply the database changes with `npm run db:migrate:up`, then configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM` locally and in the deployment environment. `CONTACT_EMAIL_TO` optionally overrides the recipient; by default the contact address in `about_me` is used. `SMTP_NO_REPLY_TO` optionally sets the reply-to address for automated confirmations. After saving a submission, the server sends you a notification and the sender an automated thank-you confirmation. SMTP credentials must only be configured server-side.
