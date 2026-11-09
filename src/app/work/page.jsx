@@ -111,7 +111,7 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open live project"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 flex justify-center items-center group"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group"
                             />
                           }
                         >
@@ -134,7 +134,7 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open project repository"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 flex justify-center items-center group"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group"
                             />
                           }
                         >
@@ -160,13 +160,13 @@ const Work = () => {
                 {projects.map((item) => (
                   <SwiperSlide key={item.id} className="w-full">
                     <div className="h-115 relative group flex justify-center items-center bg-pink-50/20">
-                      <div className="absolute inset-0 w-full bg-black/10 z-10" />
+                      <div className="absolute inset-0 w-full rounded-3xl bg-black/5 z-10" />
                       <div className="relative w-full h-full">
                         {item.thumbnailUrl && (
                           <Image
                             src={item.thumbnailUrl}
                             unoptimized
-                            className="object-cover xl:h-115 xl:w-192.5 h-114.5 w-103"
+                            className="object-cover rounded-3xl xl:h-115 xl:w-192.5 h-114.5 w-103"
                             alt={`${item.title} thumbnail`}
                             height={520}
                             width={770}
