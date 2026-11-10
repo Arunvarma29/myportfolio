@@ -83,7 +83,7 @@ const Work = () => {
                 <h2 className="text-[42px] font-bold leading-none dark:text-white capitalize">
                   {project.title}
                 </h2>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-white/70">
                   {project.description || project.summary}
                 </p>
 
@@ -98,7 +98,7 @@ const Work = () => {
                   </ul>
                 )}
 
-                <div className="border-2 border-gray-300" />
+                <div className="border-2 border-gray-300 dark:border-white/20" />
 
                 <div className="flex items-center gap-4">
                   {project.liveUrl && (
@@ -111,7 +111,7 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open live project"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
                             />
                           }
                         >
@@ -134,7 +134,7 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open project repository"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
                             />
                           }
                         >

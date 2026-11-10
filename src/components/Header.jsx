@@ -5,6 +5,7 @@ import React from "react";
 import Nav from "./Nav";
 import { Button } from "./ui/button";
 import MobileNaV from "./MobileNav";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
@@ -23,18 +24,22 @@ const Header = () => {
           </h1>
         </Link>
 
-        <div className="hidden xl:flex items-center gap-8">
-          <Nav />
-          <Link href={"/contact"}>
-            <Button className=" bg-green-700 text-white hover:bg-green-500">
-              Hire me{" "}
-            </Button>
-          </Link>
-        </div>
+        <div className="flex items-center gap-5">
+          <div className="hidden xl:flex items-center gap-8">
+            <Nav />
+            <Link href={"/contact"}>
+              <Button className=" bg-green-700 text-white hover:bg-green-500">
+                Hire me{" "}
+              </Button>
+            </Link>
+          </div>
 
-        {/* Mobile view */}
-        <div className="xl:hidden">
-          <MobileNaV />
+          <ThemeToggle />
+
+          {/* Mobile view */}
+          <div className="xl:hidden">
+            <MobileNaV />
+          </div>
         </div>
       </div>
     </header>

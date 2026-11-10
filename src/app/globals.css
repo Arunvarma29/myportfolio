@@ -88,25 +88,25 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.437 0.078 188.216);
-  --primary-foreground: oklch(0.984 0.014 180.72);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.16 0.015 260);
+  --foreground: oklch(0.97 0.005 260);
+  --card: oklch(0.205 0.018 260);
+  --card-foreground: oklch(0.97 0.005 260);
+  --popover: oklch(0.205 0.018 260);
+  --popover-foreground: oklch(0.97 0.005 260);
+  --primary: oklch(0.2 0.02 260);
+  --primary-foreground: oklch(0.97 0.005 260);
+  --secondary: oklch(0.274 0.015 260);
+  --secondary-foreground: oklch(0.97 0.005 260);
+  --muted: oklch(0.269 0.015 260);
+  --muted-foreground: oklch(0.75 0.01 260);
+  --accent: oklch(0.78 0.2 145);
+  --accent-foreground: oklch(0.17 0.02 260);
   --avatar-ring: #A78BFA;
   --avatar-bg: #10131D;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -156,4 +156,14 @@
   .text-outline-hover {
     -webkit-text-stroke: 1px #00ff99;
   }
+}
+
+.dark body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.dark :is(button, [role="button"], a[download], a[aria-label^="Open"]) {
+  outline: 1px dotted currentColor;
+  outline-offset: 3px;
 }
