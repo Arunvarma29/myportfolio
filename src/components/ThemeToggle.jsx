@@ -25,7 +25,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       aria-label="Toggle day and night mode"
       title="Toggle day and night mode"
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-current transition-colors hover:text-accent"
+      className="flex h-10 w-10 items-center justify-center rounded-full border-dotted hover:border-accent transition-colors hover:text-accent outline-slate-500 outline-dotted  "
     >
       <BsMoon aria-hidden="true" className="dark:hidden" />
       <BsSun aria-hidden="true" className="hidden dark:block" />

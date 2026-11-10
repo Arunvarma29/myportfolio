@@ -233,8 +233,8 @@ const Resume = () => {
                   return <li key={`${skill.name}-${index}`}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className="w-full h-35 bg-[#d4d4d8] rounded-4xl flex justify-center items-center">
-                          <div className="text-7xl group-hover:text-white transition-all duration-300">
+                        <TooltipTrigger className="group w-full h-35 rounded-4xl border border-transparent bg-[#d4d4d8] flex justify-center items-center dark:border-accent dark:bg-[#232329] dark:text-white">
+                          <div className="text-7xl text-gray-900 group-hover:text-white transition-all duration-300 dark:text-white">
                             {skill.icon_url ? (
                               <Image
                                 src={skill.icon_url}
@@ -242,6 +242,7 @@ const Resume = () => {
                                 width={72}
                                 height={72}
                                 unoptimized
+                                className="dark:brightness-0 dark:invert"
                               />
                             ) : (
                               <Icon />
