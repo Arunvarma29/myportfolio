@@ -101,7 +101,7 @@ const Stats = () => {
                             className="text-4xl xl:text-6xl font-extrabold"
                           />
                         )}
-                        <p className={`${item.text.length <15 ? "max-w-25":"max-w-37.5"} leading-snug dark:text-white/80`}>{item.text}</p>
+                        <p className={`${item.text.length <15 ? "max-w-25":"max-w-37.5"} leading-snug text-muted-foreground`}>{item.text}</p>
                     </div>
                 )
             })}

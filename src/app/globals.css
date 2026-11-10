@@ -4,6 +4,99 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f0f2ef;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #293d4b;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #216779;
+}
+
+@property --accent-foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f5ffff;
+}
+
+@property --card {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7f9f6;
+}
+
+@property --border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #cbd8d4;
+}
+
+@property --muted-foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #65767a;
+}
+
+@property --sky-top {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #9bcbe6;
+}
+
+@property --sky-bottom {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e2e8d9;
+}
+
+:root {
+  transition:
+    --background 250ms linear,
+    --card 250ms linear,
+    --border 250ms linear,
+    --sky-top 250ms linear,
+    --sky-bottom 250ms linear;
+}
+
+:root.theme-manual {
+  transition: none;
+}
+
+.resume-tabs [data-slot="tabs-trigger"] {
+  border-color: var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  transition: border-color 250ms linear;
+}
+
+.resume-tabs [data-slot="tabs-trigger"]:hover {
+  border-color: var(--accent);
+}
+
+.resume-tabs [data-slot="tabs-trigger"][data-active] {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.resume-tabs [data-slot="tabs-trigger"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.download-cv-button {
+  border: 1px solid var(--accent);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -54,73 +147,37 @@
   --background: oklch(96.89% 0.0041 55.503);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: var(--foreground);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(97.913% 0.00011 271.152);
-  --primary-foreground: oklch(0.984 0.014 180.72);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.97 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: var(--background);
+  --primary-foreground: var(--foreground);
+  --secondary: var(--card);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--card);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(69.499% 0.23462 142.54);
   --accent-foreground: oklch(0.205 0 0);
-  --avatar-ring: #7C3AED;
-  --avatar-bg: #F5F3FF;
+  --avatar-ring: var(--accent);
+  --avatar-bg: var(--card);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --input: var(--border);
+  --ring: var(--accent);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.6 0.118 184.704);
-  --sidebar-primary-foreground: oklch(0.984 0.014 180.72);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.16 0.015 260);
-  --foreground: oklch(0.97 0.005 260);
-  --card: oklch(0.205 0.018 260);
-  --card-foreground: oklch(0.97 0.005 260);
-  --popover: oklch(0.205 0.018 260);
-  --popover-foreground: oklch(0.97 0.005 260);
-  --primary: oklch(0.2 0.02 260);
-  --primary-foreground: oklch(0.97 0.005 260);
-  --secondary: oklch(0.274 0.015 260);
-  --secondary-foreground: oklch(0.97 0.005 260);
-  --muted: oklch(0.269 0.015 260);
-  --muted-foreground: oklch(0.75 0.01 260);
-  --accent: oklch(0.78 0.2 145);
-  --accent-foreground: oklch(0.17 0.02 260);
-  --avatar-ring: #A78BFA;
-  --avatar-bg: #10131D;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 14%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.704 0.14 182.503);
-  --sidebar-primary-foreground: oklch(0.277 0.046 192.524);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: var(--accent-foreground);
+  --sidebar-accent: var(--card);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--accent);
 }
 
 @layer base {
@@ -129,8 +186,17 @@
   }
 
   body {
-    @apply font-primary bg-primary text-black leading-loose;
-    @apply font-jetbrains
+    @apply font-primary leading-loose;
+    color: var(--foreground);
+    background-color: var(--background);
+    background-image: linear-gradient(
+      125deg,
+      var(--sky-top),
+      var(--background) 48%,
+      var(--sky-bottom)
+    );
+    background-attachment: fixed;
+    @apply font-jetbrains;
   }
 
   .h1 {
@@ -150,11 +216,11 @@
   }
 
   .text-outline {
-    -webkit-text-stroke: 1px #8c8f8d;
+    -webkit-text-stroke: 1px var(--muted-foreground);
   }
 
   .text-outline-hover {
-    -webkit-text-stroke: 1px #00ff99;
+    -webkit-text-stroke: 1px var(--accent);
   }
 }
 
@@ -163,7 +229,128 @@
   color: var(--foreground);
 }
 
-.dark :is(button, [role="button"], a[download], a[aria-label^="Open"]) {
-  outline: 1px dotted currentColor;
-  outline-offset: 3px;
+.theme-clock {
+  display: inline-flex;
+  width: 7.5rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--background) 76%, transparent);
+  color: var(--foreground);
+  box-shadow:
+    0 2px 12px color-mix(in srgb, var(--sky-bottom) 34%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--card) 48%, transparent);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    background-color 1.2s linear,
+    border-color 1.2s linear,
+    color 1.2s linear,
+    box-shadow 1.2s linear,
+    transform 180ms ease;
+}
+
+.theme-clock:hover {
+  border-color: var(--accent);
+  box-shadow: 0 3px 18px color-mix(in srgb, var(--accent) 25%, transparent);
+  transform: translateY(-1px);
+}
+
+.theme-clock:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.theme-clock__dial {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  overflow: visible;
+}
+
+.theme-clock__rim {
+  fill: color-mix(in srgb, var(--card) 84%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 58%, transparent);
+  stroke-width: 1;
+}
+
+.theme-clock__tick {
+  stroke: var(--muted-foreground);
+  stroke-linecap: round;
+  stroke-width: 0.8;
+}
+
+.theme-clock__hand {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  stroke-linecap: round;
+}
+
+.theme-clock__hand--hour {
+  stroke: var(--foreground);
+  stroke-width: 1.8;
+  transition: transform 1s linear;
+}
+
+.theme-clock__hand--minute {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  transition: transform 1s linear;
+}
+
+.theme-clock__hand--second {
+  stroke: var(--accent);
+  stroke-width: 0.7;
+  transition: transform 1s linear;
+}
+
+.theme-clock__pin {
+  fill: var(--accent);
+}
+
+.theme-clock__readout {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.theme-clock__time {
+  font-family: var(--font-jetbrains_mono), monospace;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.theme-clock__phase {
+  margin-top: 0.27rem;
+  color: var(--muted-foreground);
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .theme-clock {
+    width: 9rem;
+    height: 3.5rem;
+  }
+
+  .theme-clock__dial {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .theme-clock__time {
+    font-size: 0.82rem;
+  }
+
+  .theme-clock__phase {
+    font-size: 0.55rem;
+  }
 }

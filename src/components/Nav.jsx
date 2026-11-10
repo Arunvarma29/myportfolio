@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,7 +21,7 @@ const links = [
     path: "/work",
   },
   {
-    name: "contact",
+    name: "Hire Me",
     path: "/contact",
   },
 ];

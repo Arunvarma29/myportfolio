@@ -24,7 +24,7 @@ const links = [
     path: '/work'
   },
   {
-    name: "contact",
+    name: "Hire Me",
     path: '/contact'
   },
 ]
@@ -37,17 +37,17 @@ const MobileNaV = () => {
       <CiMenuFries className="text-[32px] text-accent "/>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex flex-col bg-card text-foreground">
         {/* logo */}
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href={"/"}>
-         <h1 className="text-5xl font-bold dark:text-white">
+         <h1 className="text-5xl font-bold text-foreground">
             &lt;
-            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">
+            <span className="text-accent-foreground inline-flex h-9 w-9 rounded-full items-center justify-center bg-accent leading-none">
              .
             </span>
             /
-            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">.</span>
+            <span className="text-accent-foreground inline-flex h-9 w-9 rounded-full items-center justify-center bg-accent leading-none">.</span>
             &gt;
           </h1>
           </Link>
@@ -60,8 +60,11 @@ const MobileNaV = () => {
             <Link 
             href={link.path}
             key={index}
-            className={`${link.path === pathname && "text-accent border-b-2"}
-            text-xl capitalize hover:text-accent transition-all`}
+            className={`text-xl capitalize transition-colors hover:text-accent ${
+              link.path === pathname
+                ? "border-b-2 border-accent text-accent"
+                : "text-foreground"
+            }`}
             >
             {link.name}
             </Link>

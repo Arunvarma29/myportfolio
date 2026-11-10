@@ -98,11 +98,11 @@ useEffect(() => {
             What I do
           </p>
 
-          <h1 className="text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-3xl lg:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-5xl">
             Services I offer
           </h1>
 
-          <p className="mt-2 max-w-xl text-xs lg:text-[16px] leading-5 text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
+          <p className="mt-2 max-w-xl text-xs lg:text-[16px] leading-5 text-muted-foreground sm:text-sm sm:leading-6">
             I build modern web applications and AI-powered
             solutions, focusing on usability, performance,
             and maintainable software.
@@ -139,31 +139,31 @@ useEffect(() => {
             >
               {/* Number and arrow */}
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-4xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1px_#9ca3af] transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-7xl">
+                <span className="text-4xl font-extrabold leading-none text-transparent text-outline transition-colors duration-300 group-hover:text-accent sm:text-5xl lg:text-7xl">
                    <span>{String(index + 1).padStart(2, "0")}</span>
                 </span>
 
                 <Link
                   href={service.href}
                   aria-label={`Discuss ${service.title}`}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 border-dotted text-gray-900 transition-all duration-300 hover:-rotate-45 hover:border-dotted hover:bg-accent hover:text-black focus-visible:outline-1 focus-visible:ring-2 focus-visible:ring-accent dark:border-white/20 dark:text-white sm:h-10 sm:w-10 lg:h-14 lg:w-14"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-border border-dotted text-foreground transition-all duration-300 hover:-rotate-45 hover:border-dotted hover:bg-accent hover:text-accent-foreground focus-visible:outline-1 focus-visible:ring-2 focus-visible:ring-accent sm:h-10 sm:w-10 lg:h-14 lg:w-14"
                 >
                   <BsArrowDownRight className="text-lg" />
                 </Link>
               </div>
 
               {/* Title */}
-              <h2 className="text-xl font-bold leading-tight text-gray-950 transition-colors duration-300 group-hover:text-accent dark:text-white sm:text-2xl lg:text-[32px]">
+              <h2 className="text-xl font-bold leading-tight text-foreground transition-colors duration-300 group-hover:text-accent sm:text-2xl lg:text-[32px]">
                 {service.title}
               </h2>
 
               {/* Description */}
-              <p className="mt-2 text-xs leading-5 lg:text-lg text-gray-600 dark:text-white/60 sm:text-sm sm:leading-6">
+              <p className="mt-2 text-xs leading-5 lg:text-lg text-muted-foreground sm:text-sm sm:leading-6">
                 {service.description}
               </p>
 
               {/* Separator */}
-              <div className="mt-4 h-px w-full bg-gray-200 transition-colors duration-300 group-hover:bg-accent dark:bg-white/15" />
+              <div className="mt-4 h-px w-full bg-border transition-colors duration-300 group-hover:bg-accent" />
             </motion.article>
           ))}
         </motion.div>
@@ -173,8 +173,6 @@ useEffect(() => {
 };
 
 export default Services;
-
-
 
 
 

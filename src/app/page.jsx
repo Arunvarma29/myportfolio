@@ -60,11 +60,11 @@ const Home = () => {
                   ? "Loading..."
                   : profile?.headline || ""}</span>
               <h1 className="h1 mb-6 font-bold">
-                Hello I'm <br /> <span className="text-accent">{loading
+                Hello I&apos;m <br /> <span className="text-accent">{loading
                     ? "Loading..."
                     : profile?.full_name || ""}</span>
               </h1>
-              <p className="h3 max-w-125 mb-9 dark:text-white/80 ">
+              <p className="h3 max-w-125 mb-9 text-muted-foreground">
                 {/* A minimalist builder solving complex problems. Turning cluttered
                 ideas into simple, working software. */}
 
@@ -82,9 +82,9 @@ const Home = () => {
                   href="/api/cv"
                   download
                   className={buttonVariants({
-                    variant: "outline",
+                    variant: "default",
                     size: "lg",
-                    className: "uppercase flex items-center gap-2 bg-accent text-white hover:bg-green-800",
+                    className: "download-cv-button uppercase flex items-center gap-2 shadow-sm hover:bg-accent/85",
                   })}
                 >
                   <span className="px-2">Download CV</span>

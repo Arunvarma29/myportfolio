@@ -126,7 +126,7 @@ const Resume = () => {
       <div className="container mx-auto max-w-350 px-4 ">
         <Tabs
           defaultValue="experience"
-          className="flex flex-col lg:flex-row lg:gap-10 xl:flex-row "
+          className="resume-tabs flex flex-col lg:flex-row lg:gap-10 xl:flex-row "
         >
           <TabsList className="flex flex-col w-full max-w-95 mx-auto xl:mx-0">
             <TabsTrigger value="experience">Experience</TabsTrigger>
@@ -154,7 +154,7 @@ const Resume = () => {
                 <h3 className=" text-4xl xl:text-5xl font-bold">
                   My experience
                 </h3>
-                <p className="max-w-190 text-gray-700 dark:text-gray-300 xl:text-lg font-semibold mx-auto xl:mx-0">
+                <p className="max-w-190 text-muted-foreground xl:text-lg font-semibold mx-auto xl:mx-0">
                   My professional experience and roles.
                 </p>
                 <ScrollArea className={"h-100"}>
@@ -163,18 +163,18 @@ const Resume = () => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                          className="bg-card text-card-foreground h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                         >
                           <span className="text-accent">{formatDuration(item)}</span>
-                          <h3 className=" text-lg xl:text-xl text-white max-w-65 min-h-15 text-center lg:text-left">
+                          <h3 className="text-lg xl:text-xl text-card-foreground max-w-65 min-h-15 text-center lg:text-left">
                             {item.role}
                           </h3>
                           <div className="flex items-center gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                            <p className="text-white/60">{item.company}</p>
+                            <p className="text-muted-foreground">{item.company}</p>
                           </div>
                           {item.location && (
-                            <p className="text-sm text-white/50">{item.location}</p>
+                            <p className="text-sm text-muted-foreground">{item.location}</p>
                           )}
                         </li>
                       );
@@ -190,7 +190,7 @@ const Resume = () => {
                 <h3 className=" text-4xl xl:text-5xl font-bold">
                   My education
                 </h3>
-                <p className="max-w-190 text-gray-700 dark:text-gray-300 xl:text-lg font-semibold mx-auto xl:mx-0">
+                <p className="max-w-190 text-muted-foreground xl:text-lg font-semibold mx-auto xl:mx-0">
                   My academic background and education.
                 </p>
                 <ScrollArea className={"h-100"}>
@@ -199,15 +199,15 @@ const Resume = () => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                          className="bg-card text-card-foreground h-46 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                         >
                           <span className="text-accent">{formatDuration(item)}</span>
-                          <h3 className="text-md xl:text-lg text-white max-w-65 min-h-15 text-center lg:text-left">
+                          <h3 className="text-md xl:text-lg text-card-foreground max-w-65 min-h-15 text-center lg:text-left">
                             {[item.degree, item.field_of_study].filter(Boolean).join(" - ")}
                           </h3>
                           <div className="flex items-center gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                            <p className="text-white/60">{item.institution}</p>
+                            <p className="text-muted-foreground">{item.institution}</p>
                           </div>
                         </li>
                       );
@@ -222,7 +222,7 @@ const Resume = () => {
               <div className="flex flex-col gap-7.5 ">
                 <div className="flex flex-col gap-7.5 text-center xl:text-left">
                   <h3 className="text-4xl xl:text-5xl font-bold">My Skills</h3>
-                <p className="max-w-150 lg:text-lg dark:text-gray-300 text-center xl:text-left mx-auto xl:mx-0">Technologies and skills.</p>
+                <p className="max-w-150 lg:text-lg text-muted-foreground text-center xl:text-left mx-auto xl:mx-0">Technologies and skills.</p>
                 
               </div>
               <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-5 gap-4">
@@ -233,8 +233,8 @@ const Resume = () => {
                   return <li key={`${skill.name}-${index}`}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className="group w-full h-35 rounded-4xl border border-transparent bg-[#d4d4d8] flex justify-center items-center dark:border-accent dark:bg-[#232329] dark:text-white">
-                          <div className="text-7xl text-gray-900 group-hover:text-white transition-all duration-300 dark:text-white">
+                        <TooltipTrigger className="group w-full h-35 rounded-4xl border border-border bg-card text-card-foreground flex justify-center items-center">
+                          <div className="text-7xl text-foreground group-hover:text-accent transition-all duration-300">
                             {skill.icon_url ? (
                               <Image
                                 src={skill.icon_url}
@@ -242,7 +242,7 @@ const Resume = () => {
                                 width={72}
                                 height={72}
                                 unoptimized
-                                className="dark:brightness-0 dark:invert"
+                                className="transition-[filter] duration-300"
                               />
                             ) : (
                               <Icon />
@@ -269,14 +269,14 @@ const Resume = () => {
             >
               <div className="flex flex-col gap-7.5">
 
-                <h3 className="text-4xl text-black dark:text-gray-300 xl:text-5xl font-bold">About me</h3>
+                <h3 className="text-4xl text-foreground xl:text-5xl font-bold">About me</h3>
                 <p className="max-w-190 text-md xl:text-lg  mx-auto xl:mx-0">{profile?.bio || ""}</p>
 
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-190 mx-auto xl:mx-0"> 
                   {aboutInfo.map(([fieldName, fieldValue])=>{
                     return(
                       <li key={fieldName} className="flex items-center justify-center xl:justify-start gap-4">
-                        <span className="text-green-700 text-lg">{fieldName}{":"}</span>
+                        <span className="text-accent text-lg">{fieldName}{":"}</span>
                         <span className="xl:text-xl text-[14px] ">{fieldValue}</span>
                       </li>
                     );

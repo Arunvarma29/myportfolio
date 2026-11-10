@@ -3,38 +3,32 @@ import React from "react";
 
 //Components
 import Nav from "./Nav";
-import { Button } from "./ui/button";
 import MobileNaV from "./MobileNav";
 import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
     <header className="py-8 xl:py-12 ">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto grid grid-cols-[1fr_auto_1fr] items-center px-3">
         {/* logo */}
-        <Link href={"/"}>
-          <h1 className="text-5xl font-bold dark:text-white">
+        <Link href={"/"} className="justify-self-start">
+          <h1 className="text-2xl font-bold text-foreground sm:text-5xl">
             &lt;
-            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">
+            <span className="inline-flex h-5 w-5 rounded-full items-center justify-center bg-accent text-accent-foreground leading-none sm:h-9 sm:w-9">
              .
             </span>
             /
-            <span className="text-[yellow] inline-flex h-9 w-9 rounded-full items-center justify-center bg-green-700 leading-none">.</span>
+            <span className="inline-flex h-5 w-5 rounded-full items-center justify-center bg-accent text-accent-foreground leading-none sm:h-9 sm:w-9">.</span>
             &gt;
           </h1>
         </Link>
 
-        <div className="flex items-center gap-5">
+        <ThemeToggle />
+
+        <div className="flex items-center justify-self-end">
           <div className="hidden xl:flex items-center gap-8">
             <Nav />
-            <Link href={"/contact"}>
-              <Button className=" bg-green-700 text-white hover:bg-green-500">
-                Hire me{" "}
-              </Button>
-            </Link>
           </div>
-
-          <ThemeToggle />
 
           {/* Mobile view */}
           <div className="xl:hidden">

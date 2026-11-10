@@ -80,10 +80,10 @@ const Work = () => {
                 <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                   {String(activeIndex + 1).padStart(2, "0")}
                 </div>
-                <h2 className="text-[42px] font-bold leading-none dark:text-white capitalize">
+                <h2 className="text-[42px] font-bold leading-none text-foreground capitalize">
                   {project.title}
                 </h2>
-                <p className="text-gray-700 dark:text-white/70">
+                <p className="text-muted-foreground">
                   {project.description || project.summary}
                 </p>
 
@@ -98,7 +98,7 @@ const Work = () => {
                   </ul>
                 )}
 
-                <div className="border-2 border-gray-300 dark:border-white/20" />
+                <div className="border-2 border-border" />
 
                 <div className="flex items-center gap-4">
                   {project.liveUrl && (
@@ -111,11 +111,11 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open live project"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
+                              className="w-17.5 h-17.5 rounded-full bg-card hover:bg-accent flex justify-center items-center group"
                             />
                           }
                         >
-                          <BsArrowUpRight className="dark:text-white text-3xl" />
+                          <BsArrowUpRight className="text-foreground group-hover:text-accent-foreground text-3xl" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Live project</p>
@@ -134,11 +134,11 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open project repository"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
+                              className="w-17.5 h-17.5 rounded-full bg-card hover:bg-accent flex justify-center items-center group"
                             />
                           }
                         >
-                          <BsGithub className="dark:text-white text-3xl" />
+                          <BsGithub className="text-foreground group-hover:text-accent-foreground text-3xl" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>GitHub repository</p>
@@ -159,14 +159,14 @@ const Work = () => {
               >
                 {projects.map((item) => (
                   <SwiperSlide key={item.id} className="w-full">
-                    <div className="h-115 relative group flex justify-center items-center overflow-hidden rounded-3xl bg-pink-50/20">
-                      <div className="absolute inset-0 w-full rounded-3xl bg-black/5 z-10" />
+                    <div className="h-115 relative group flex justify-center items-center overflow-hidden rounded-3xl bg-card/20">
+                      <div className="absolute inset-0 z-10 w-full rounded-3xl bg-black/5" />
                       <div className="relative w-full h-full">
                         {item.thumbnailUrl && (
                           <Image
                             src={item.thumbnailUrl}
                             unoptimized
-                            className="object-cover border-2 border-dashed dark:border-white rounded-3xl xl:h-115 xl:w-192.5 h-114.5 w-103"
+                            className="object-cover border-2 border-dashed border-border rounded-3xl xl:h-115 xl:w-192.5 h-114.5 w-103"
                             alt={`${item.title} thumbnail`}
                             height={520}
                             width={770}
@@ -180,7 +180,7 @@ const Work = () => {
                 {projects.length > 1 && (
                   <WorkSliderBtn
                     containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                    btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all dark:border-2 dark:border-dotted dark:border-accent dark:outline dark:outline-1 dark:outline-dotted dark:outline-accent dark:outline-offset-2"
+                    btnStyles="bg-accent hover:bg-accent/80 text-accent-foreground text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
                   />
                 )}
               </Swiper>

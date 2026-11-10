@@ -45,7 +45,7 @@ const info = [
 
 
 const inputStyles =
-  "h-12 w-full min-w-0 rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-950 placeholder:text-gray-400 shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent dark:border-white/10 dark:bg-[#17212b] dark:text-white dark:placeholder:text-white/40";
+  "h-12 w-full min-w-0 rounded-lg border border-border bg-card px-4 text-sm text-card-foreground placeholder:text-muted-foreground shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent";
 
 const Contact = () => {
   const [service, setService] = useState("");
@@ -120,15 +120,15 @@ const Contact = () => {
           <div className="order-2 min-w-0 lg:order-1">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-xl shadow-gray-900/5 sm:p-8 lg:p-9 dark:border-white/10 dark:bg-[#111b26] dark:shadow-black/20"
+              className="flex flex-col gap-4 rounded-3xl border border-border bg-card p-6 shadow-xl shadow-gray-900/5 sm:p-8 lg:p-9"
             >
               {/* Form heading */}
               <div className="space-y-3">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl lg:text-4xl dark:text-white">
+                <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                   Let&apos;s work together
                 </h1>
 
-                <p className="text-sm leading-6 text-gray-600 sm:text-base dark:text-slate-300/75">
+                <p className="text-sm leading-6 text-muted-foreground sm:text-base">
                   Have a project in mind? Tell me about your
                   ideas, goals, or requirements. Let&apos;s build
                   something meaningful together.
@@ -140,7 +140,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="firstName"
-                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
+                    className="text-sm font-medium text-foreground"
                   >
                     First name
                   </label>
@@ -160,7 +160,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="lastName"
-                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
+                    className="text-sm font-medium text-foreground"
                   >
                     Last name
                   </label>
@@ -180,7 +180,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="email"
-                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
+                    className="text-sm font-medium text-foreground"
                   >
                     Email address
                   </label>
@@ -200,10 +200,10 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="phone"
-                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
+                    className="text-sm font-medium text-foreground"
                   >
                     Phone number
-                    <span className="ml-1 text-gray-500 dark:text-slate-400">
+                    <span className="ml-1 text-muted-foreground">
                       (optional)
                     </span>
                   </label>
@@ -224,7 +224,7 @@ const Contact = () => {
               <div className="space-y-2">
                 <label
                   htmlFor="service"
-                  className="text-sm font-medium text-gray-700 dark:text-slate-200"
+                  className="text-sm font-medium text-foreground"
                 >
                   Service
                 </label>
@@ -232,7 +232,7 @@ const Contact = () => {
                 <Select value={service || null} onValueChange={(value) => setService(value || "")}>
                   <SelectTrigger
                     id="service"
-                    className={`${inputStyles} justify-between text-gray-700 dark:text-slate-200`}
+                    className={`${inputStyles} justify-between text-card-foreground`}
                   >
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
@@ -269,7 +269,7 @@ const Contact = () => {
               <div className="space-y-2">
                 <label
                   htmlFor="message"
-                  className="text-sm font-medium text-white/80"
+                  className="text-sm font-medium text-foreground"
                 >
                   Your message
                 </label>
@@ -280,12 +280,12 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                   required
                   maxLength={5000}
-                  className="min-h-36 w-full resize-y rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm leading-6 text-gray-950 placeholder:text-gray-400 shadow-none focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent sm:min-h-40 dark:border-white/10 dark:bg-[#17212b] dark:text-white dark:placeholder:text-white/40"
+                  className="min-h-36 w-full resize-y rounded-lg border border-border bg-card px-4 py-3 text-sm leading-6 text-card-foreground placeholder:text-muted-foreground shadow-none focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent sm:min-h-40"
                 />
               </div>
 
               {/* Submit button */}
-              <div className="flex flex-col gap-4 border-t border-gray-200 pt-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
+              <div className="flex flex-col gap-4 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <p
                   aria-live="polite"
                   className={`text-xs leading-5 ${
@@ -293,7 +293,7 @@ const Contact = () => {
                       ? "text-green-400"
                       : submissionStatus === "error" || submissionStatus === "warning"
                         ? "text-amber-300"
-                        : "text-gray-500 dark:text-slate-400"
+                        : "text-muted-foreground"
                   }`}
                 >
                   {feedback || "I'll get back to you as soon as possible."}
@@ -321,11 +321,11 @@ const Contact = () => {
                 Get in touch
               </p>
 
-              <h2 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
+              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                 Let&apos;s start a conversation.
               </h2>
 
-              <p className="text-sm leading-6 text-gray-600 sm:text-base dark:text-slate-300/75">
+              <p className="text-sm leading-6 text-muted-foreground sm:text-base">
                 Whether you have a project idea, a question,
                 or an opportunity, feel free to reach out.
               </p>
@@ -335,16 +335,16 @@ const Contact = () => {
               {info.map((item) => {
                 const content = (
                   <>
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-lg text-emerald-800 transition-colors group-hover:bg-accent group-hover:text-gray-950 sm:h-14 sm:w-14 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-300 dark:group-hover:text-gray-200">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-lg text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground sm:h-14 sm:w-14">
                       {item.icon}
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm text-gray-500 dark:text-slate-400">
+                      <p className="text-sm text-muted-foreground">
                         {item.title}
                       </p>
 
-                      <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-gray-950 sm:text-base dark:text-slate-100">
+                      <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-foreground sm:text-base">
                         {item.description}
                       </p>
                     </div>
@@ -356,12 +356,12 @@ const Contact = () => {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="group flex min-w-0 items-center gap-4 rounded-2xl border border-gray-200 bg-white/70 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-white/10 dark:bg-white/3 dark:hover:border-emerald-300/40 dark:hover:bg-emerald-300/6"
+                        className="group flex min-w-0 items-center gap-4 rounded-2xl border border-border bg-card/70 p-4 transition-colors hover:border-accent/50 hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                       >
                         {content}
                       </a>
                     ) : (
-                      <div className="flex min-w-0 items-center gap-4 rounded-2xl border border-gray-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/3">
+                      <div className="flex min-w-0 items-center gap-4 rounded-2xl border border-border bg-card/70 p-4">
                         {content}
                       </div>
                     )}
@@ -371,16 +371,16 @@ const Contact = () => {
             </div>
 
             {/* Availability card */}
-            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-5 dark:border-emerald-300/20 dark:bg-emerald-300/6">
+            <div className="rounded-2xl border border-accent/30 bg-accent/10 p-5">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-accent" />
 
-                <p className="text-sm font-semibold text-gray-950 dark:text-slate-100">
+                <p className="text-sm font-semibold text-foreground">
                   Open to opportunities
                 </p>
               </div>
 
-              <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-slate-300/75">
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Available to discuss full-stack development,
                 software engineering, and AI-powered projects.
               </p>
