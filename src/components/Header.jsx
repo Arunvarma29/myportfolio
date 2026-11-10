@@ -24,13 +24,13 @@ const Header = () => {
           </h1>
         </Link>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-7">
           <div className="hidden xl:flex items-center gap-8">
             <Nav />
             <Link href={"/contact"}>
-              <Button className=" bg-green-700 text-white hover:bg-green-500">
+              {/* <Button className=" bg-green-700 text-white hover:bg-green-500">
                 Hire me{" "}
-              </Button>
+              </Button> */}
             </Link>
           </div>
 
