@@ -45,7 +45,7 @@ const info = [
 
 
 const inputStyles =
-  "h-12 w-full min-w-0 rounded-lg border border-white/10 bg-[#1c1b22] px-4 text-sm text-white placeholder:text-white/45 shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent";
+  "h-12 w-full min-w-0 rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-950 placeholder:text-gray-400 shadow-none transition-colors focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent dark:border-white/10 dark:bg-[#17212b] dark:text-white dark:placeholder:text-white/40";
 
 const Contact = () => {
   const [service, setService] = useState("");
@@ -114,21 +114,21 @@ const Contact = () => {
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         {/* Main layout */}
-        <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.9fr)] lg:gap-10 xl:gap-14">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.9fr)] lg:gap-10 xl:gap-14">
 
           {/* Contact form */}
           <div className="order-2 min-w-0 lg:order-1">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-3 rounded-2xl border border-white/5 bg-[#27272c] p-7 shadow-lg shadow-black/5 sm:p-7 lg:p-8"
+              className="flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-xl shadow-gray-900/5 sm:p-8 lg:p-9 dark:border-white/10 dark:bg-[#111b26] dark:shadow-black/20"
             >
               {/* Form heading */}
               <div className="space-y-3">
-                <h1 className="text-2xl font-bold tracking-tight text-accent sm:text-3xl lg:text-4xl">
+                <h1 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl lg:text-4xl dark:text-white">
                   Let&apos;s work together
                 </h1>
 
-                <p className="text-sm leading-6 text-white/65 sm:text-base">
+                <p className="text-sm leading-6 text-gray-600 sm:text-base dark:text-slate-300/75">
                   Have a project in mind? Tell me about your
                   ideas, goals, or requirements. Let&apos;s build
                   something meaningful together.
@@ -140,7 +140,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="firstName"
-                    className="text-sm font-medium text-white/80"
+                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     First name
                   </label>
@@ -160,7 +160,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="lastName"
-                    className="text-sm font-medium text-white/80"
+                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     Last name
                   </label>
@@ -180,7 +180,7 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="email"
-                    className="text-sm font-medium text-white/80"
+                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     Email address
                   </label>
@@ -200,10 +200,10 @@ const Contact = () => {
                 <div className="min-w-0 space-y-2">
                   <label
                     htmlFor="phone"
-                    className="text-sm font-medium text-white/80"
+                    className="text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     Phone number
-                    <span className="ml-1 text-white/40">
+                    <span className="ml-1 text-gray-500 dark:text-slate-400">
                       (optional)
                     </span>
                   </label>
@@ -224,7 +224,7 @@ const Contact = () => {
               <div className="space-y-2">
                 <label
                   htmlFor="service"
-                  className="text-sm font-medium text-white/80"
+                  className="text-sm font-medium text-gray-700 dark:text-slate-200"
                 >
                   Service
                 </label>
@@ -232,7 +232,7 @@ const Contact = () => {
                 <Select value={service || null} onValueChange={(value) => setService(value || "")}>
                   <SelectTrigger
                     id="service"
-                    className={`${inputStyles} justify-between`}
+                    className={`${inputStyles} justify-between text-gray-700 dark:text-slate-200`}
                   >
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
@@ -280,12 +280,12 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                   required
                   maxLength={5000}
-                  className="min-h-36 w-full resize-y rounded-lg border border-white/10 bg-[#1c1b22] px-4 py-3 text-sm leading-6 text-white placeholder:text-white/45 shadow-none focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent sm:min-h-40"
+                  className="min-h-36 w-full resize-y rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm leading-6 text-gray-950 placeholder:text-gray-400 shadow-none focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent sm:min-h-40 dark:border-white/10 dark:bg-[#17212b] dark:text-white dark:placeholder:text-white/40"
                 />
               </div>
 
               {/* Submit button */}
-              <div className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 border-t border-gray-200 pt-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
                 <p
                   aria-live="polite"
                   className={`text-xs leading-5 ${
@@ -293,7 +293,7 @@ const Contact = () => {
                       ? "text-green-400"
                       : submissionStatus === "error" || submissionStatus === "warning"
                         ? "text-amber-300"
-                        : "text-white/45"
+                        : "text-gray-500 dark:text-slate-400"
                   }`}
                 >
                   {feedback || "I'll get back to you as soon as possible."}
@@ -321,30 +321,30 @@ const Contact = () => {
                 Get in touch
               </p>
 
-              <h2 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl">
+              <h2 className="text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl dark:text-white">
                 Let&apos;s start a conversation.
               </h2>
 
-              <p className="text-sm leading-6 text-gray-600 sm:text-base">
+              <p className="text-sm leading-6 text-gray-600 sm:text-base dark:text-slate-300/75">
                 Whether you have a project idea, a question,
                 or an opportunity, feel free to reach out.
               </p>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
               {info.map((item) => {
                 const content = (
                   <>
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#27272c] text-lg text-accent transition-colors group-hover:bg-accent group-hover:text-[#17171c] sm:h-14 sm:w-14">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-lg text-emerald-800 transition-colors group-hover:bg-accent group-hover:text-gray-950 sm:h-14 sm:w-14 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-300 dark:group-hover:text-gray-200">
                       {item.icon}
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-500 dark:text-slate-400">
                         {item.title}
                       </p>
 
-                      <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-gray-950 sm:text-base">
+                      <p className="mt-1 wrap-break-word text-sm font-semibold leading-6 text-gray-950 sm:text-base dark:text-slate-100">
                         {item.description}
                       </p>
                     </div>
@@ -356,12 +356,12 @@ const Contact = () => {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="group flex min-w-0 items-center gap-4 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                        className="group flex min-w-0 items-center gap-4 rounded-2xl border border-gray-200 bg-white/70 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-white/10 dark:bg-white/3 dark:hover:border-emerald-300/40 dark:hover:bg-emerald-300/6"
                       >
                         {content}
                       </a>
                     ) : (
-                      <div className="flex min-w-0 items-center gap-4">
+                      <div className="flex min-w-0 items-center gap-4 rounded-2xl border border-gray-200 bg-white/70 p-4 dark:border-white/10 dark:bg-white/3">
                         {content}
                       </div>
                     )}
@@ -371,16 +371,16 @@ const Contact = () => {
             </div>
 
             {/* Availability card */}
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-5 dark:border-emerald-300/20 dark:bg-emerald-300/6">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-accent" />
 
-                <p className="text-sm font-semibold text-gray-950">
+                <p className="text-sm font-semibold text-gray-950 dark:text-slate-100">
                   Open to opportunities
                 </p>
               </div>
 
-              <p className="mt-3 text-sm leading-6 text-gray-600">
+              <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-slate-300/75">
                 Available to discuss full-stack development,
                 software engineering, and AI-powered projects.
               </p>
