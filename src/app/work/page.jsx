@@ -159,7 +159,7 @@ const Work = () => {
               >
                 {projects.map((item) => (
                   <SwiperSlide key={item.id} className="w-full">
-                    <div className="h-115 relative group flex justify-center items-center bg-pink-50/20">
+                    <div className="h-115 relative group flex justify-center items-center overflow-hidden rounded-3xl bg-pink-50/20">
                       <div className="absolute inset-0 w-full rounded-3xl bg-black/5 z-10" />
                       <div className="relative w-full h-full">
                         {item.thumbnailUrl && (
@@ -180,7 +180,7 @@ const Work = () => {
                 {projects.length > 1 && (
                   <WorkSliderBtn
                     containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                    btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                    btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all dark:border-2 dark:border-dotted dark:border-accent dark:outline dark:outline-1 dark:outline-dotted dark:outline-accent dark:outline-offset-2"
                   />
                 )}
               </Swiper>

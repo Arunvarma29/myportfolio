@@ -154,7 +154,7 @@ const Resume = () => {
                 <h3 className=" text-4xl xl:text-5xl font-bold">
                   My experience
                 </h3>
-                <p className="max-w-190 text-gray-700 xl:text-lg font-semibold mx-auto xl:mx-0">
+                <p className="max-w-190 text-gray-700 dark:text-gray-300 xl:text-lg font-semibold mx-auto xl:mx-0">
                   My professional experience and roles.
                 </p>
                 <ScrollArea className={"h-100"}>
@@ -190,7 +190,7 @@ const Resume = () => {
                 <h3 className=" text-4xl xl:text-5xl font-bold">
                   My education
                 </h3>
-                <p className="max-w-190 text-gray-700 xl:text-lg font-semibold mx-auto xl:mx-0">
+                <p className="max-w-190 text-gray-700 dark:text-gray-300 xl:text-lg font-semibold mx-auto xl:mx-0">
                   My academic background and education.
                 </p>
                 <ScrollArea className={"h-100"}>
@@ -222,7 +222,7 @@ const Resume = () => {
               <div className="flex flex-col gap-7.5 ">
                 <div className="flex flex-col gap-7.5 text-center xl:text-left">
                   <h3 className="text-4xl xl:text-5xl font-bold">My Skills</h3>
-                <p className="max-w-150 lg:text-lg text-center xl:text-left mx-auto xl:mx-0">Technologies and skills.</p>
+                <p className="max-w-150 lg:text-lg dark:text-gray-300 text-center xl:text-left mx-auto xl:mx-0">Technologies and skills.</p>
                 
               </div>
               <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-5 gap-4">
@@ -269,7 +269,7 @@ const Resume = () => {
             >
               <div className="flex flex-col gap-7.5">
 
-                <h3 className="text-4xl text-black xl:text-5xl font-bold">About me</h3>
+                <h3 className="text-4xl text-black dark:text-gray-300 xl:text-5xl font-bold">About me</h3>
                 <p className="max-w-190 text-md xl:text-lg  mx-auto xl:mx-0">{profile?.bio || ""}</p>
 
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-190 mx-auto xl:mx-0"> 
