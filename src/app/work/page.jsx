@@ -166,7 +166,7 @@ const Work = () => {
                           <Image
                             src={item.thumbnailUrl}
                             unoptimized
-                            className="object-cover rounded-3xl xl:h-115 xl:w-192.5 h-114.5 w-103"
+                            className="object-cover border-2 border-dashed dark:border-white rounded-3xl xl:h-115 xl:w-192.5 h-114.5 w-103"
                             alt={`${item.title} thumbnail`}
                             height={520}
                             width={770}
