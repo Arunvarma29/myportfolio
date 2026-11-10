@@ -77,8 +77,8 @@ const Work = () => {
           <div className="flex flex-col xl:flex-row xl:gap-7.5">
             <div className="w-full xl:w-[50%] xl:h-115 flex flex-col px-2 xl:justify-between order-2 xl:order-0">
               <div className="flex flex-col gap-7.5 h-[50%]">
-                <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
-                  {String(activeIndex + 1).padStart(2, "0")}
+                <div className="text-8xl leading-none hover:text-accent font-extrabold text-transparent text-outline">
+                  {String(activeIndex + 1).padStart(2, "0")} 
                 </div>
                 <h2 className="text-[42px] font-bold leading-none dark:text-white capitalize">
                   {project.title}
@@ -111,11 +111,11 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open live project"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 dark:hover:bg-accent hover:bg-accent flex justify-center items-center group dark:bg-white/10"
                             />
                           }
                         >
-                          <BsArrowUpRight className="dark:text-white text-3xl" />
+                          <BsArrowUpRight className="dark:text-white text-3xl " />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Live project</p>
@@ -134,7 +134,7 @@ const Work = () => {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Open project repository"
-                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent flex justify-center items-center group dark:bg-white/10"
+                              className="w-17.5 h-17.5 rounded-full bg-gray-200 hover:bg-accent dark:hover:bg-accent flex justify-center items-center group dark:bg-white/10"
                             />
                           }
                         >
